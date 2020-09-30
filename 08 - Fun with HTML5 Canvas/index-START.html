@@ -20,6 +20,22 @@
   ctx.lineJoin = 'round' 
   ctx.lineCap = 'round'
 
+  // Set variables
+  let isDrawing = false
+  let lastX = 0
+  let lastY = 0
+
+  // Event handlers
+  const draw = event => {
+    if (!isDrawing) return // Stop fn running when not mousedown
+    console.log(event)
+  }
+
+  // Event listeners
+  canvas.addEventListener('mousemove', draw)
+  canvas.addEventListener('mousedown', () => isDrawing = true)
+  canvas.addEventListener('mouseup', () => isDrawing = false)
+  canvas.addEventListener('mouseout', () => isDrawing = false)
 </script>
 
 <style>
