@@ -52,6 +52,18 @@
     console.log(index)
 
     // delete the comment with the ID of 823423
+
+    // Mutating original array
+    // comments.splice(index, 1)
+
+    // Non mutating
+    const updatedComments = [
+      ...comments.slice(0, index),
+      ...comments.slice(index + 1)
+    ]
+
+    console.table(comments)
+    console.table(updatedComments)
   </script>
 </body>
 </html>
