@@ -25,16 +25,22 @@
   let isDrawing = false
   let lastX = 0
   let lastY = 0
+  let hue = 0
+  let direction = true
 
   // Event handlers
   const draw = event => {
     if (!isDrawing) return // Stop fn running when not mousedown
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`
     ctx.beginPath()
     ctx.moveTo(lastX, lastY)
     ctx.lineTo(event.offsetX, event.offsetY)
     ctx.stroke()
     lastX = event.offsetX
     lastY = event.offsetY
+    hue >= 360 ? hue = 0 : hue++
+    ctx.lineWidth >= 100 || ctx.lineWidth <= 1 ? direction = !direction : direction = direction
+    direction ? ctx.lineWidth++ : ctx.lineWidth--
   }
 
   // Event listeners
